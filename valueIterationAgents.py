@@ -66,13 +66,13 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        if self.mdp.isTerminal(state):
+        if self.mdp.isTerminal(state): # This means there are no actions available.
             return 0
         transitions=self.mdp.getTransitionStatesAndProbs(state,action) # returns list of items in shape (state,prob)
         qVal=0
         for transition in transitions:
             qVal+=transition[1]*(self.mdp.getReward(state,action,transition[0])+self.discount*self.getValue(transition[0]))
-        print("Qval", qVal)
+        #rint("Qval", qVal)
         return qVal
 
     def computeActionFromValues(self, state):
